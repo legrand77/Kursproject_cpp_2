@@ -4,4 +4,4 @@
 #else
 #define KURSPROJEKT_2_API __declspec(dllimport)
 #endif
-void printRacer(int type, int pathLength);
+KURSPROJEKT_2_API void printRacer(int type, int pathLength);

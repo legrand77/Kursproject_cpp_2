@@ -6,7 +6,7 @@
 #endif
 #include "transport.h"
 #include <string>
- struct air : public transport
+KURSPROJEKT_2_API struct air : public transport
 {
 public:
 	std::string name1{ "Воздушные" };

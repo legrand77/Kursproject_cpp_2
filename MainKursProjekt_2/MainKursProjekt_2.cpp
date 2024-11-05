@@ -18,8 +18,7 @@
 
 int main()
 
-{   int action{};
-   
+{   int action{};   
 
     setlocale(LC_ALL, "Russian");
     system("chcp 1251");

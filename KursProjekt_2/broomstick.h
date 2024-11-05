@@ -7,9 +7,9 @@
 #include "air.h" // метла
  struct broomstick : public air {
  public:
-	broomstick(int a, double x);
+	 KURSPROJEKT_2_API broomstick(int a, double x);
 
-	broomstick(double x) : broomstick(20, x) {};
+	 KURSPROJEKT_2_API broomstick(double x) : broomstick(20, x) {};
 
 
 

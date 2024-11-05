@@ -7,6 +7,6 @@
 #include "air.h" // ковер самолет
  struct magicCarpet :public air {
  public:
-	magicCarpet(int a, double x);
-	magicCarpet(double x) : magicCarpet(10, x) {};
+	 KURSPROJEKT_2_API magicCarpet(int a, double x);
+	 KURSPROJEKT_2_API magicCarpet(double x) : magicCarpet(10, x) {};
 }; 

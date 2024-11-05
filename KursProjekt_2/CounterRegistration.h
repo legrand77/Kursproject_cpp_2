@@ -6,4 +6,4 @@
 #endif
 #include "transport.h"
 #include "registration.h"
-int CounterRegistration(registration* e);
+KURSPROJEKT_2_API int CounterRegistration(registration* e);

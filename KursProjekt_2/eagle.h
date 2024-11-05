@@ -7,6 +7,6 @@
 #include "air.h"
  struct eagle :public air {
  public:
-	eagle(int a, double x);
-	eagle(double x) : eagle(8, x) {};
+	 KURSPROJEKT_2_API	eagle(int a, double x);
+	 KURSPROJEKT_2_API	eagle(double x) : eagle(8, x) {};
 };

@@ -4,4 +4,4 @@
 #else
 #define KURSPROJEKT_2_API __declspec(dllimport)
 #endif
-void transportList();
+KURSPROJEKT_2_API void transportList();

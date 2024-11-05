@@ -13,5 +13,5 @@ double DrivingTime{};// Время движения до отдыха
 double rest[3]{}; //Длительность отдыха
 
 	std::string name1{ "Наземные" };
-	ground() { type = 1; }
+	KURSPROJEKT_2_API	ground() { type = 1; }
 };

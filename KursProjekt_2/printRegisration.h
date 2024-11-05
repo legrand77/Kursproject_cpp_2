@@ -5,4 +5,4 @@
 #define KURSPROJEKT_2_API __declspec(dllimport)
 #endif
 #include "registration.h"
-void printRegisration(registration* e);
+KURSPROJEKT_2_API void printRegisration(registration* e);

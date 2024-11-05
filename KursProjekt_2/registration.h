@@ -5,7 +5,7 @@
 #else
 #define KURSPROJEKT_2_API __declspec(dllimport)
 #endif
-struct registration { // класс регистрации транспортных средств
+ struct registration { // класс регистрации транспортных средств
 public:
 	transport registrationList[8];
 };

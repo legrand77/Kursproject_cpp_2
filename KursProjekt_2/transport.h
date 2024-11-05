@@ -6,7 +6,7 @@
 #define KURSPROJEKT_2_API __declspec(dllimport)
 #endif
 
-struct transport {
+ struct transport {
 
 public:
 	int speed{}; // скорость
