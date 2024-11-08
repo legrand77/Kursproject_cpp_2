@@ -2,7 +2,7 @@
 #include "magicCarpet.h"
 #include "transport.h"
 #include < math.h >
-magicCarpet::magicCarpet(int a, double x)
+magicCarpet::magicCarpet(double a, double x)
 {
 	name = "Ковер-самолет";
 	speed = a;
@@ -11,4 +11,4 @@ magicCarpet::magicCarpet(int a, double x)
 	else if (x >= 5000 && x < 10000) way = x * 0.9;
 	else if (x >= 10000) way = x * 0.95;
 	time = way / speed;
-}
+};

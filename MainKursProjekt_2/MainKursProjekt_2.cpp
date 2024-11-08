@@ -11,15 +11,8 @@
 #include "eagle.h"
 #include "printRacer.h"
 #include "transportList.h"
-#include "registration.h"
-#include "inputRegistration.h"
-#include "printRegisration.h"
-#include "CounterRegistration.h"
-
 int main()
-
 {   int action{};   
-
     setlocale(LC_ALL, "Russian");
     system("chcp 1251");
     do
@@ -28,7 +21,6 @@ int main()
     int type{}; //тип гонки
     int typeTransport{}; //тип транспорта или завершение регистрации
     int pathLength{}; // длина дистанции
-    
     int valueRegistration{};
     std::cout << "Добро пожаловать в гоночный симулятор!" << std::endl;
     std::cout << "1. Гонка для наземного транспорта" << std::endl;
@@ -38,15 +30,14 @@ int main()
     std::cin >> type;
     std::cout << "Укажите длину дистанции (должна быть положительна): ";
     std::cin >> pathLength;
-    registration registrationList{}; // создание экземпляра класса регистрации
-    registrationList.registrationList[0] = terrainBoots(pathLength);
-    registrationList.registrationList[1] = broomstick(pathLength);
-    registrationList.registrationList[2] = camel(pathLength);
-    registrationList.registrationList[3] = centaur(pathLength);
-    registrationList.registrationList[4] = eagle(pathLength);
-    registrationList.registrationList[5] = camelFast(pathLength);
-    registrationList.registrationList[6] = magicCarpet(pathLength);
-    
+   transport* registrationList[7]{}; // создание экземпляров класса транспорт
+    registrationList[0] = new terrainBoots(pathLength);
+    registrationList[1] = new broomstick(pathLength);
+    registrationList[2] = new camel(pathLength);
+    registrationList[3] = new centaur(pathLength);
+    registrationList[4] = new eagle(pathLength);
+    registrationList[5] = new camelFast(pathLength);
+    registrationList[6] = new magicCarpet(pathLength);
     do
     { 
     do
@@ -65,12 +56,57 @@ int main()
         transportList();
         
         std::cin >> typeTransport;
-        if (typeTransport != 0)
+        if (typeTransport != 0)// заполнение листа регистрации 
         {
-            inputRegistration(type, typeTransport, pathLength, &registrationList); // заполнение листа регистрации 
-            valueRegistration = CounterRegistration(&registrationList);// счетчик зарегистрированных ТС
-            if (valueRegistration != 0) printRegisration(&registrationList);// печать зарегистрированных ТС
-        } 
+            int counter{};
+            for (int i = 0; i < 7; i++)
+            {
+                if ((registrationList[i]->getType() == static_cast<TransportType>(type)) || (type == 3))
+                {
+                    if ((typeTransport - 1) == i)
+                    {
+
+                        if (registrationList[i]->getStatus() == 0)
+                        {
+                            registrationList[i]->setStatus(1);
+                            std::cout << registrationList[i]->getName() << " успешно зарегистрирован!" << std::endl;
+                            counter++;
+                            break;
+                        }
+                        else  std::cout << registrationList[i]->getName() << " уже зарегистрирован!" << std::endl;
+                        counter++;
+                        break;
+                    }
+                }                             
+            }
+            if (counter == 0 )std::cout << "Попытка зарегистрировать неправильный тип транспортного средства! " << std::endl;
+       
+            int counter_1{};
+            for (int i = 0; i < 7; i++)// счетчик зарегистрированных ТС
+            {   
+                {  
+                    counter_1 = counter_1 + registrationList[i]->getStatus();
+                }   
+            }
+          valueRegistration = counter_1;
+            if (valueRegistration != 0 && counter != 0)// печать зарегистрированных ТС
+            {
+                std::cout << "Зарегистрированные транспортные средства: ";
+                int counter{};
+                for (int i = 0; i < 7; i++)
+                {
+                    
+                    if (registrationList[i]->getStatus())
+                    {
+                        counter++;
+                        if (counter > 1) std::cout << ", ";
+                        std::cout << registrationList[i]->getName();
+                        
+                    }                        
+                } 
+                std::cout << std::endl; 
+          }
+        }
     }
 
     }  while (valueRegistration < 2);
@@ -80,19 +116,17 @@ int main()
     std::cout << "2. Начать гонку\nВыберите действие: ";
     std::cin >> action;
     } while (action == 1);
-
-
     bool swapped = false;// сортировка пузырьком ТС
     do 
     {
         swapped = false;
         for (int i = 1; i < 7; i++) 
         {  
-               if (registrationList.registrationList[i - 1].time > registrationList.registrationList[i].time)
+               if (registrationList[i - 1]->getTime() > registrationList[i]->getTime())
                {
-                transport temp = registrationList.registrationList[i - 1];
-                registrationList.registrationList[i - 1] = registrationList.registrationList[i];
-                registrationList.registrationList[i] = temp;
+                transport* temp = registrationList[i - 1];
+                registrationList[i - 1] = registrationList[i];
+                registrationList[i] = temp;
                 swapped = true;
                }
         }
@@ -102,10 +136,10 @@ int main()
     std::cout  << "Результаты гонки:  " << std::endl; // вывод результатов гонки
     for (int i=0;i< 7;i++)
     {
-        if (registrationList.registrationList[i].status == 1) 
+        if (registrationList[i]->getStatus() == 1)
         { 
-           std::cout << counter << ". " << registrationList.registrationList[i].name << ". Время:  ";
-           std::cout << registrationList.registrationList[i].time << std::endl;
+           std::cout << counter << ". " << registrationList[i]->getName() << ". Время:  ";
+           std::cout << registrationList[i]->getTime() << std::endl;
            counter++;
         }
     }
@@ -115,6 +149,12 @@ int main()
     std::cout << "2. Выйти " << std::endl;
     std::cout << "Выберите действие: " << std::endl;
     std::cin >> action;
+
+    for (int i = 0; i < 7; i++)
+    {
+        delete registrationList[i];
+     }
+
     } while (action == 1);
 
  return EXIT_SUCCESS;

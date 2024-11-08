@@ -24,14 +24,10 @@
     <ClCompile Include="camel.cpp" />
     <ClCompile Include="camelFast.cpp" />
     <ClCompile Include="centaur.cpp" />
-    <ClCompile Include="CounterRegistration.cpp" />
     <ClCompile Include="eagle.cpp" />
     <ClCompile Include="ground.cpp" />
-    <ClCompile Include="inputRegistration.cpp" />
     <ClCompile Include="magicCarpet.cpp" />
     <ClCompile Include="printRacer.cpp" />
-    <ClCompile Include="printRegisration.cpp" />
-    <ClCompile Include="registration.cpp" />
     <ClCompile Include="terrainBoots.cpp" />
     <ClCompile Include="transport.cpp" />
     <ClCompile Include="transportList.cpp" />
@@ -42,14 +38,11 @@
     <ClInclude Include="camel.h" />
     <ClInclude Include="camelFast.h" />
     <ClInclude Include="centaur.h" />
-    <ClInclude Include="CounterRegistration.h" />
     <ClInclude Include="eagle.h" />
     <ClInclude Include="ground.h" />
-    <ClInclude Include="inputRegistration.h" />
     <ClInclude Include="magicCarpet.h" />
     <ClInclude Include="printRacer.h" />
-    <ClInclude Include="printRegisration.h" />
-    <ClInclude Include="registration.h" />
+    <ClInclude Include="spec.h" />
     <ClInclude Include="terrainBoots.h" />
     <ClInclude Include="transport.h" />
     <ClInclude Include="transportList.h" />
@@ -149,7 +142,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>KURSPROJEKT_2_EXPORTS;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>KURSPROJEKT_2_EXPORTS;_DEBUG;_WINDOWS;_USRDLL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>

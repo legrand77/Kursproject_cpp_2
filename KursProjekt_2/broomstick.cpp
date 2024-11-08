@@ -2,7 +2,8 @@
 #include "broomstick.h"
 #include "transport.h"
 #include < math.h >
-broomstick::broomstick(int a, double x)
+
+ broomstick::broomstick(double a, double x)
 {
     name = "Метла";
     speed = a;
